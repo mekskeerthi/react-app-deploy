@@ -16,10 +16,11 @@ jobs:
     - run: CI-false npm run build
     - name: Transfer Build folder  on Ec2 instance
       uses: easingthemes/ssh deploy@2.1.4
-       env:
-         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY ||
-         REMOTE_HOST: ${{ secrets.DEPLOY_HOST ||
-         REMORE_USER: ${{ secrets.DEPLOY_USE }}
-         REMOTE_PORT:  ${{secrets.DEPLOY_PORT}}
-         SOURCE: "build/"
-         TARGET: ${{ secrets.DEPLOY_TARGET }}
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY ||
+        REMOTE_HOST: ${{ secrets.DEPLOY_HOST ||
+        REMORE_USER: ${{ secrets.DEPLOY_USE }}
+        REMOTE_PORT:  ${{secrets.DEPLOY_PORT}}
+        SOURCE: "build/"
+        TARGET: ${{ secrets.DEPLOY_TARGET }}
+
