@@ -9,7 +9,7 @@ import Header from './components/Header';
 function App() {
   return (
     <div className="App">
-       <h1> This is  React App -DEPLOY --</h1>
+       <h1> This is  React App -DEPLOY -- EC2</h1>
    
       
  
