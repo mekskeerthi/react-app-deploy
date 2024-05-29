@@ -1,0 +1,25 @@
+name: Deploy  Remotely
+on:
+  push:
+    branches: [ main ]
+jobs:
+  Deploy-Remotely:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js20.x to Build
+    - uses: actions/sepup-node@v2
+      with:
+        node-version: 20.x
+
+    - run: npm install
+    - run: CI-false npm run build
+    - name: Transfer Build folder  on Ec2 instance
+      uses: easingthemes/ssh deploy@2.1.4
+       env:
+         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY ||
+         REMOTE_HOST: ${{ secrets.DEPLOY_HOST ||
+         REMORE_USER: ${{ secrets.DEPLOY_USE }}
+         REMOTE_PORT:  ${{secrets.DEPLOY_PORT}}
+         SOURCE: "build/"
+         TARGET: ${{ secrets.DEPLOY_TARGET }}
